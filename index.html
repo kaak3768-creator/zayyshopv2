@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1a0b2e" />
+  <title>ZayyStore — Minecraft Digital Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lilita+One&family=Creepster&family=Pixelify+Sans:wght@700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="theme.css" />
+  <link rel="stylesheet" href="halloween.css" />
+</head>
+<body class="no-scroll">
+  <div class="intro" id="intro" aria-label="Memuat ZayyStore" role="status">
+    <div class="intro-bg" aria-hidden="true"></div>
+    <div class="intro-shade" aria-hidden="true"></div>
+    <div class="intro-center">
+      <div class="intro-word" id="introWord" aria-hidden="true"></div>
+      <div class="intro-pick" id="introPick" aria-hidden="true">⛏️</div>
+      <div class="intro-bar" aria-hidden="true"><i id="introFill"></i></div>
+      <div class="intro-text"><span id="introLabel">Menambang…</span> <b id="introPct">0%</b></div>
+    </div>
+    <button type="button" class="intro-skip" id="introSkip">Lewati ›</button>
+  </div>
+  <header class="sv-header">
+    <a class="sv-brand" href="#home"><span class="brand-mark">Z</span><b>ZAYYSTORE</b></a>
+    <nav id="nav" class="sv-nav"><a class="active" href="#home">Beranda</a><a href="#" onclick="document.getElementById('ordersOpen').click();return false">Cek Pesanan</a><a href="#cara">Bantuan</a></nav>
+    <div class="sv-actions"><button class="icon-btn" id="searchToggle" aria-label="Cari">⌕</button><button class="cart-btn" id="cartOpen" aria-label="Keranjang">🛒 <span id="cartCount">0</span></button><button class="orders-btn" id="ordersOpen" aria-label="Pesanan saya">Pesanan</button><button class="login-btn" id="loginBtn">Login</button><button class="login-btn" id="adminBtn" hidden>Admin Panel</button><button class="sv-burger" id="mobileMenu" aria-label="Buka menu">☰</button></div>
+  </header>
+  <main>
+    <section class="sv-hero" id="home">
+      <div class="sv-hero-bg" aria-hidden="true"></div><div class="sv-rays" aria-hidden="true"></div><div class="sv-bits" aria-hidden="true"><i style="--x:44%;--d:10s;--s:8px;--t:-10s"></i><i style="--x:9%;--d:9s;--s:4px;--t:-5s"></i><i style="--x:77%;--d:8s;--s:5px;--t:-0s"></i><i style="--x:14%;--d:14s;--s:8px;--t:-1s"></i><i style="--x:33%;--d:9s;--s:8px;--t:-0s"></i><i style="--x:75%;--d:9s;--s:5px;--t:-10s"></i><i style="--x:83%;--d:8s;--s:8px;--t:-0s"></i><i style="--x:31%;--d:8s;--s:5px;--t:-4s"></i><i style="--x:56%;--d:10s;--s:4px;--t:-9s"></i><i style="--x:42%;--d:10s;--s:4px;--t:-9s"></i><i style="--x:76%;--d:11s;--s:6px;--t:-1s"></i><i style="--x:73%;--d:9s;--s:4px;--t:-9s"></i><i style="--x:29%;--d:15s;--s:8px;--t:-12s"></i><i style="--x:43%;--d:15s;--s:8px;--t:-5s"></i><i style="--x:41%;--d:11s;--s:5px;--t:-11s"></i><i style="--x:34%;--d:9s;--s:6px;--t:-8s"></i><i style="--x:66%;--d:13s;--s:8px;--t:-4s"></i><i style="--x:80%;--d:9s;--s:4px;--t:-8s"></i></div>
+      <div class="sv-hero-in">
+        <div class="sv-hero-copy"><h1>TOKO MINECRAFT<br>TERBAIK DI<br>INDONESIA</h1><p>Semua kebutuhan Minecraft ada di sini.</p><a class="sv-cta" href="#produk">BELI SEKARANG ›</a></div>
+        <div class="sv-stats"><div><b>5.0★</b><small>Rating</small></div><div><b>24/7</b><small>Order otomatis</small></div><div><b>QRIS</b><small>Bayar instan</small></div></div>
+      </div>
+    </section>
+    <div class="sv-promo">✦ Promo launch ZayyStore — diskon 20% untuk produk pilihan, pakai kode <strong>ZAYY20</strong></div>
+    <section class="sv-section" id="produk">
+      <div class="sv-head"><span class="sv-pill">PRODUK TERLARIS</span><h2>Pilih produkmu</h2></div>
+      <div class="product-grid" id="productGrid">
+      </div>
+    </section>
+    <section class="sv-section" id="cara">
+      <div class="sv-head"><span class="sv-pill">ORDER OTOMATIS 24/7</span><h2>Cara belanja</h2></div>
+      <div class="how-grid">
+        <div class="how-card"><i>1</i><b>Pilih produk</b><small>Tambahkan ke keranjang, pakai kode promo kalau ada.</small></div>
+        <div class="how-card"><i>2</i><b>Isi data</b><small>Cukup email (dan username Minecraft bila perlu).</small></div>
+        <div class="how-card"><i>3</i><b>Scan QRIS</b><small>Bayar dari e-wallet atau m-banking apa pun.</small></div>
+        <div class="how-card"><i>4</i><b>Terima otomatis</b><small>Detail produk muncul langsung &amp; dikirim ke email.</small></div>
+      </div>
+    </section>
+    <section class="newsletter"><div class="news-icon">✉</div><div><h3>Jangan ketinggalan update!</h3><p>Dapatkan info produk dan promo terbaru dari ZayyStore.</p></div><form id="newsletterForm"><input type="email" placeholder="Masukkan email kamu" required/><button class="primary-btn">Gabung <span>→</span></button></form></section>
+  </main>
+  <footer class="sv-footer"><div class="sv-foot-grid">
+    <div><a class="sv-brand" href="#home"><span class="brand-mark">Z</span><b>ZAYYSTORE</b></a><p>Toko Minecraft digital: akun, server, coins, dan rank dengan pembayaran QRIS otomatis.</p></div>
+    <div><h4>Kategori</h4><a href="#produk">Semua Produk</a></div>
+    <div><h4>Support</h4><a href="#cara">Cara Pembelian</a><a href="#" id="footerOrders">Cek Pesanan</a><a href="https://wa.me/62XXXXXXXXXXX" target="_blank" rel="noopener">WhatsApp Admin</a></div>
+    <div><h4>Pembayaran</h4><div class="payment-pills"><span>QRIS</span><span>GoPay</span><span>OVO</span><span>DANA</span><span>ShopeePay</span><span>m-Banking</span></div></div>
+  </div><div class="sv-foot-bottom">© 2026 ZayyStore. Semua hak dilindungi.</div></footer>
+  <a class="wa-float" href="https://wa.me/62XXXXXXXXXXX" target="_blank" rel="noopener">💬 Tanya Admin</a>
+  <div class="toast" id="toast"></div>
+  <div class="overlay" id="cartOverlay"><aside class="cart-drawer"><div class="drawer-head"><div><span class="section-kicker">KERANJANG KAMU</span><h2>Keranjang <span>belanja</span></h2></div><button id="cartClose" class="close-btn">×</button></div><div id="cartItems" class="cart-items"><div class="empty-cart">🛒<b>Keranjang masih kosong</b><small>Tambahkan produk yang kamu suka.</small></div></div><div class="cart-total">
+        <form class="coupon" id="couponForm" autocomplete="off"><input id="couponInput" placeholder="Punya kode promo? mis. ZAYY20" maxlength="20" aria-label="Kode promo"/><button type="submit">Pakai</button></form>
+        <div class="sum-row"><span>Subtotal</span><b id="cartSubtotal">Rp 0</b></div>
+        <div class="sum-row discount" id="discountRow" hidden><span>Diskon <em id="couponLabel"></em> <button type="button" id="couponRemove" aria-label="Hapus kode promo">×</button></span><b id="cartDiscount">-Rp 0</b></div>
+        <div class="sum-row total"><span>Total</span><strong id="cartTotal">Rp 0</strong></div>
+        <button id="checkoutBtn" class="primary-btn full">Lanjut ke pembayaran →</button>
+        <small>🔒 Bayar aman via QRIS • Produk dikirim otomatis</small>
+      </div>
+  </aside></div>
+  <div class="modal-overlay" id="loginModal"><div class="modal"><button class="close-btn modal-close" id="loginClose">×</button><div class="modal-logo">Z</div><span class="section-kicker" id="authKicker">WELCOME BACK</span><h2 id="authTitle">Masuk ke <span>ZayyStore</span></h2><p>Akun membantu kamu mengelola pesanan.</p><form id="loginForm"><div id="authNameWrap" hidden><label>Nama</label><input id="authName" maxlength="40" placeholder="Nama kamu"/></div><label>Email</label><input id="authEmail" type="email" placeholder="nama@email.com" required/><label>Password</label><input id="authPass" type="password" placeholder="Masukkan password" required minlength="6"/><small class="auth-err" id="authErr" hidden></small><button class="primary-btn full" id="authSubmit">Masuk <span>→</span></button></form><small class="demo-note"><span id="authAsk">Belum punya akun?</span> <button type="button" class="link-btn" id="authSwitch">Daftar</button></small></div></div>
+
+  <div class="modal-overlay" id="checkoutModal" aria-hidden="true"><div class="modal checkout-modal" role="dialog" aria-modal="true" aria-labelledby="coTitle">
+    <button class="close-btn modal-close" id="checkoutClose" aria-label="Tutup">×</button>
+    <ol class="co-steps" id="coSteps"><li class="on" data-s="1"><i>1</i>Data</li><li data-s="2"><i>2</i>Bayar</li><li data-s="3"><i>3</i>Selesai</li></ol>
+
+    <section id="stepDetails">
+      <span class="section-kicker">CHECKOUT</span><h2 id="coTitle">Lengkapi <span>pesananmu</span></h2>
+      <div class="co-summary" id="coSummary"></div>
+      <form id="checkoutForm" novalidate>
+        <label for="coEmail">Email <small>(bukti & detail pesanan dikirim ke sini)</small></label>
+        <input id="coEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="nama@email.com" required/>
+        <div id="coUserWrap" hidden><label for="coUser">Username Minecraft</label>
+        <input id="coUser" name="username" autocomplete="off" placeholder="mis. Steve_123" maxlength="24"/></div>
+        <p class="form-error" id="coError" role="alert" hidden></p>
+        <button class="primary-btn full" id="coSubmit" type="submit"><span>Bayar dengan QRIS</span> <b>→</b></button>
+        <small class="demo-note">Dengan membayar, kamu menyetujui Syarat & Ketentuan ZayyStore. Produk digital tidak dapat dikembalikan setelah dikirim.</small>
+      </form>
+    </section>
+
+    <section id="stepPay" hidden>
+      <span class="section-kicker">SCAN & BAYAR</span><h2>Selesaikan <span>pembayaran</span></h2>
+      <div class="pay-grid">
+        <div class="qr-box"><div class="qr-frame"><img id="qrImg" alt="QRIS pembayaran" width="260" height="260"/><div class="qr-loading" id="qrLoading"><i></i></div></div>
+          <div class="qr-brand"><b>QRIS</b><small>Semua e-wallet & m-banking</small></div></div>
+        <div class="pay-info">
+          <div class="pay-amount"><small>Total yang harus dibayar</small><strong id="payAmount">Rp 0</strong><button type="button" class="copy-btn" id="copyAmount">Salin nominal</button></div>
+          <p class="pay-note">⚠ Bayar sesuai nominal <b>persis</b> (termasuk 3 digit terakhir) agar terdeteksi otomatis.</p>
+          <div class="pay-timer"><span>Berlaku</span><b id="payTimer">--:--</b></div>
+          <ul class="pay-steps"><li>Buka aplikasi e-wallet / m-banking</li><li>Pilih <b>Scan QR</b> lalu arahkan ke kode di samping</li><li>Konfirmasi — halaman ini otomatis berubah saat lunas</li></ul>
+          <div class="pay-status"><span class="spinner"></span><span id="payStatusText">Menunggu pembayaran…</span></div>
+          <div class="pay-meta"><span>ID Pesanan</span><b id="payOrderId">-</b></div>
+        </div>
+      </div>
+      <div class="sandbox-box" id="sandboxBox" hidden><span>🧪 Mode sandbox</span><button type="button" class="secondary-btn" id="simulateBtn">Simulasikan pembayaran berhasil</button></div>
+      <button type="button" class="link-btn" id="payClose">Tutup — pesanan tetap tersimpan di “Pesanan Saya”</button>
+    </section>
+
+    <section id="stepDone" hidden>
+      <div class="done-icon" id="doneIcon">✓</div>
+      <h2 id="doneTitle">Pembayaran <span>berhasil!</span></h2>
+      <p class="done-sub" id="doneSub"></p>
+      <div id="deliveryList" class="delivery-list"></div>
+      <div class="done-actions"><button type="button" class="primary-btn" id="doneAgain">Belanja lagi</button></div>
+    </section>
+
+    <section id="stepEnd" hidden>
+      <div class="done-icon warn" id="endIcon">⌛</div>
+      <h2 id="endTitle">Waktu pembayaran <span>habis</span></h2>
+      <p class="done-sub" id="endSub">QR sudah tidak berlaku. Jangan bayar ke QR lama — buat pesanan baru.</p>
+      <div class="done-actions"><button type="button" class="primary-btn" id="endRetry">Buat pesanan baru</button></div>
+    </section>
+  </div></div>
+
+  <div class="modal-overlay" id="ordersModal" aria-hidden="true"><div class="modal orders-modal" role="dialog" aria-modal="true" aria-labelledby="ordTitle">
+    <button class="close-btn modal-close" id="ordersClose" aria-label="Tutup">×</button>
+    <span class="section-kicker">RIWAYAT DI PERANGKAT INI</span><h2 id="ordTitle">Pesanan <span>saya</span></h2>
+    <div id="ordersList" class="orders-list"></div>
+    <small class="demo-note">Riwayat tersimpan di browser ini. Detail pesanan juga dikirim ke email kamu setelah lunas.</small>
+  </div></div>
+  <script>
+  /* Layar pembuka: teks ZayyStore "ditambang" huruf demi huruf */
+  (() => {
+    const intro = document.getElementById("intro");
+    if (!intro) return;
+    const word = document.getElementById("introWord"), pick = document.getElementById("introPick");
+    const fill = document.getElementById("introFill"), pct = document.getElementById("introPct"), label = document.getElementById("introLabel");
+    const TEXT = "ZayyStore", HIT = 2, HIT_MS = 140;
+    const letters = [...TEXT].map(ch => { const s = document.createElement("span"); s.className = "ch"; s.textContent = ch; word.appendChild(s); return s; });
+    let done = false, loaded = document.readyState === "complete", finished = false;
+    window.addEventListener("load", () => { loaded = true; if (finished) leave(); });
+
+    function particles(el) {
+      const r = el.getBoundingClientRect(), host = intro.querySelector(".intro-center");
+      const h = host.getBoundingClientRect();
+      for (let i = 0; i < 7; i++) {
+        const p = document.createElement("i"); p.className = "chip";
+        p.style.cssText = `left:${r.left - h.left + r.width / 2}px;top:${r.top - h.top + r.height * .55}px;--dx:${(Math.random() - .5) * 90}px;--dy:${-30 - Math.random() * 60}px;--s:${4 + Math.random() * 5}px`;
+        host.appendChild(p); setTimeout(() => p.remove(), 700);
+      }
+    }
+    function leave() {
+      if (done) return; done = true;
+      intro.classList.add("out");
+      document.body.classList.remove("no-scroll");
+      setTimeout(() => intro.remove(), 800);
+    }
+    document.getElementById("introSkip").addEventListener("click", leave);
+
+    function mine(i) {
+      if (done) return;
+      if (i >= letters.length) {
+        label.textContent = "Selesai!"; pct.textContent = "100%"; fill.style.width = "100%";
+        pick.classList.add("gone"); finished = true;
+        setTimeout(() => { if (loaded) leave(); else label.textContent = "Menyiapkan toko…"; }, 300);
+        return;
+      }
+      const el = letters[i], hc = word.getBoundingClientRect(), r = el.getBoundingClientRect();
+      pick.style.transform = `translate(${r.left - hc.left + r.width / 2}px,0)`;
+      let n = 0;
+      const swing = () => {
+        if (done) return;
+        pick.classList.remove("swing"); void pick.offsetWidth; pick.classList.add("swing");
+        el.classList.remove("hit"); void el.offsetWidth; el.classList.add("hit");
+        el.dataset.crack = ++n;
+        setTimeout(() => {
+          particles(el);
+          if (n < HIT) return swing();
+          el.classList.add("mined"); el.removeAttribute("data-crack");
+          const p = Math.round(((i + 1) / letters.length) * 100);
+          fill.style.width = p + "%"; pct.textContent = p + "%";
+          setTimeout(() => mine(i + 1), 60);
+        }, HIT_MS);
+      };
+      setTimeout(swing, i === 0 ? 150 : 0);
+    }
+    mine(0);
+  })();
+  </script>
+  <script src="script.js"></script>
+  <script src="auth.js"></script>
+  <script src="checkout.js"></script>
+  <script src="halloween.js"></script>
+</body>
+</html>
