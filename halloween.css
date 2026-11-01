@@ -1,0 +1,157 @@
+/* ZayyStore — TEMA HALLOWEEN. Dimuat TERAKHIR (setelah theme.css) sehingga menimpa warna biru.
+   Hapus <link> halloween.css + <script> halloween.js di index.html untuk kembali ke tema biru. */
+:root{--blue:#ff7a1a;--blue2:#ffa24d;--navy:#1a0b2e;--pale:#fff4e8;--line:#f0e3d6;--ink:#1d1030;
+  --hw-night:#0d0618;--hw-violet:#2a1245;--hw-purple:#7b2cbf;--hw-pumpkin:#ff7a1a;--hw-bone:#fff1dc;--hw-slime:#7dff8f}
+
+/* ---------- dasar halaman ---------- */
+body{background:
+  radial-gradient(900px 480px at 50% -140px,#5b1fa0b0,transparent),
+  radial-gradient(900px 420px at 50% 112%,#ff7a1a30,transparent),
+  linear-gradient(#150826,#0d0618 70%,#080311);background-attachment:fixed;color:var(--ink)}
+:focus-visible{outline-color:#ffa24d!important}
+.toast{background:#1a0b2e;border:1px solid #ff7a1a66}
+.overlay,.modal-overlay{background:#0c0514bd}
+
+/* ---------- header ---------- */
+.sv-header{background:#14072bdb;border:1px solid #ffffff17;border-bottom:2px solid #ff7a1a66;box-shadow:0 12px 30px #0000005c,0 6px 24px #ff7a1a1c}
+.brand-mark{background:linear-gradient(145deg,#ffa24d,#e25a00);box-shadow:0 7px 16px #ff7a1a44}
+.sv-brand b{text-shadow:0 0 14px #ff7a1a66}
+.sv-nav a:hover,.sv-nav a.active{background:#ff7a1a2e;color:#ffd9a8}
+.sv-actions .login-btn{background:linear-gradient(180deg,#ff9a3c,#ff6a00);box-shadow:0 3px 0 #a33d00}
+.sv-actions .icon-btn,.sv-actions .cart-btn,.sv-burger{background:#ffffff1a}
+.cart-btn span{background:#ff7a1a}
+
+/* ---------- hero: foto dijadikan adegan malam Halloween ---------- */
+.sv-hero-bg{filter:brightness(.78) contrast(1.12) saturate(1.1)}
+.sv-hero-bg:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#6d28d9 0%,#a3361c 70%,#ff7a1a 100%);mix-blend-mode:color;z-index:0}
+.sv-hero-bg:after{background:linear-gradient(90deg,#0d0618e6,#1a0b2e8a 55%,#2a124526),linear-gradient(0deg,#ff7a1a26,transparent 45%);z-index:1}
+.sv-rays{background:linear-gradient(115deg,transparent 32%,#ffb34745 46%,transparent 60%);background-size:260% 100%}
+.sv-bits i{background:#ff9a3c;box-shadow:0 0 10px #ff6a00;animation-name:bit}
+.sv-pill{background:#ff7a1a26;border-color:#ff7a1a66;color:#ffd9a8}
+.sv-hero h1{color:var(--hw-bone);text-shadow:0 4px 0 #3b0f66,0 0 34px #ff7a1a77,0 10px 30px #000a}
+.sv-hero .sv-cta{background:linear-gradient(#ff9a3c,#ff6a00);box-shadow:0 5px 0 #a33d00,0 14px 26px #0000004d,0 0 24px #ff7a1a55}
+.sv-hero .sv-stats div{background:#2a124566;border-color:#ff7a1a55}
+.sv-hero:before{content:"";position:absolute;z-index:1;right:9%;top:118px;width:128px;height:128px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle at 62% 62%,#e3ad6c 0 11px,transparent 12px),radial-gradient(circle at 30% 68%,#e3ad6c 0 7px,transparent 8px),radial-gradient(circle at 40% 28%,#e8b97a 0 5px,transparent 6px),radial-gradient(circle at 36% 34%,#fff4d6,#ffd9a0 60%,#f2a65a);
+  box-shadow:0 0 50px 14px #ffb34777,0 0 150px 60px #ff7a1a30;animation:moonpulse 6s ease-in-out infinite alternate}
+@keyframes moonpulse{from{box-shadow:0 0 40px 10px #ffb34755,0 0 130px 50px #ff7a1a22}to{box-shadow:0 0 62px 20px #ffb34790,0 0 170px 70px #ff7a1a3a}}
+
+/* ---------- promo & judul ---------- */
+.sv-promo{background:linear-gradient(90deg,#ff7a1a,#ffb347,#ff7a1a);background-size:220% 100%;animation:promo 6s linear infinite;color:#2a1000}
+.sv-promo strong{background:#1a0b2e;color:#ffd9a8}
+@keyframes promo{to{background-position:-220% 0}}
+.sv-head h2{font-family:Creepster,"Lilita One",Poppins;letter-spacing:1.5px;font-size:44px;color:var(--hw-bone);text-shadow:0 3px 0 #3b0f66,0 0 24px #ff7a1a55}
+
+/* ---------- tab kategori ---------- */
+.sv-tabs .filter{background:#fff1e0;color:#a34100;box-shadow:0 5px 0 #7a2f00,0 10px 20px #0000003d}
+.sv-tabs .filter.active{background:#2a1245;color:#ffb066;box-shadow:0 5px 0 #12061f,0 10px 20px #0000003d}
+.sv-tabs .filter.active:after{background:#ff7a1a}
+
+/* ---------- kartu produk ---------- */
+.sv-card.product-card{background:#fff6ec;box-shadow:0 14px 34px #00000055}
+.sv-card.product-card:hover{box-shadow:0 20px 40px #000000a0,0 0 0 2px #ff7a1a99,0 0 34px #ff7a1a40}
+.g-account{background:linear-gradient(160deg,#ff9a3c,#c2410c 55%,#4a1380)}
+.g-server{background:linear-gradient(160deg,#6dff8a,#1f9d55 50%,#2a1245)}
+.g-premium{background:linear-gradient(160deg,#c084fc,#7b2cbf 55%,#1e0a3c)}
+.g-coins{background:linear-gradient(160deg,#ffd23f,#ff7a1a 60%,#5b1fa0)}
+.g-rank{background:linear-gradient(160deg,#ff6bd5,#8b2cc9 58%,#25093f)}
+.sv-art svg [stroke="#17335f"]{stroke:#1a0b2e}
+.sv-art svg [fill="#0a3f7a"]{fill:#1a0b2e}
+.sv-art b{color:#ffb347;-webkit-text-stroke:8px #1a0b2e;text-shadow:0 5px 0 #1a0b2e}
+.sv-off{background:#7b2cbf}
+.sv-cat.blue{background:#6d28d9}
+.sv-body h3,.sv-price strong{color:#1d1030}
+.sv-body p,.sv-meta{color:#6b5a7e}.sv-rate{color:#1d1030}.sv-sep{color:#d9c9e8}
+.add-cart.sv-buy{background:linear-gradient(180deg,#ff9a3c,#ff6a00);box-shadow:0 4px 0 #a33d00}
+
+/* ---------- cara belanja, newsletter, footer ---------- */
+.sv-section .how-card,.newsletter{background:#fff6ec}
+.how-card i{background:linear-gradient(145deg,#ffa24d,#e25a00);box-shadow:0 6px 14px #ff7a1a40}
+.how-card b{color:#1d1030}.how-card small{color:#6b5a7e}
+.news-icon{background:#ffe9d2;color:#c2410c}
+.newsletter input:focus,.modal input:focus{border-color:#ffa24d;box-shadow:0 0 0 3px #ff7a1a1f}
+.sv-footer{background:#12061f;color:#cbb8e6;border-top:2px solid #ff7a1a55;box-shadow:0 -10px 40px #ff7a1a14}
+.sv-footer .payment-pills span{background:#ffffff12;border-color:#ffffff1f;color:#e6d8f5}
+@media(max-width:900px){.sv-nav{background:#14072b}}
+
+/* ---------- tombol & elemen checkout (menimpa biru di style.css) ---------- */
+.primary-btn,.login-btn{background:linear-gradient(110deg,#ff6a00,#ff9a3c);box-shadow:0 8px 17px #ff6a0040}
+.primary-btn:hover,.login-btn:hover{box-shadow:0 10px 22px #ff6a0066}
+.secondary-btn{color:#a34100}
+.orders-btn{color:#a34100}.orders-btn:hover{background:var(--pale)}
+.close-btn{background:#f5eefb;color:#4a3a63}
+.coupon input{border-color:#ffc999;background:#fff6ec}.coupon input:focus{border-color:#ffa24d}
+.coupon button{background:#1a0b2e}
+.qty button{background:#fff4e8}
+.cart-row .cart-product-icon,.news-icon{background:#ffe9d2}
+.cart-line-total,.sum-row.total strong,.co-line.total strong,.product-bottom strong{color:#c2410c}
+.co-summary{background:#fff6ec;border-color:#f3dfcb}.co-line.total{border-top-color:#e9cfb4}
+.co-skel{background:linear-gradient(90deg,#f8ebdd 25%,#fff7ee 50%,#f8ebdd 75%);background-size:200% 100%}
+.co-steps li.on i{box-shadow:0 0 0 4px #ff7a1a2e}
+.co-steps i{background:#f3eaf9}
+.qr-loading{background:#fff6ec}.qr-loading i{border-color:#ffd9b8;border-top-color:var(--blue)}
+.pay-amount{background:linear-gradient(110deg,#c2410c,#7b2cbf);box-shadow:0 10px 22px #7b2cbf44}
+.pay-status{background:#fff1e3;color:#a34100}
+.spinner{border-color:#ffd9b8;border-top-color:var(--blue)}
+.code{background:#fff0e0}.code code{color:#5b1fa0}
+.delivery{background:#fffaf4;border-color:#f1dfcc}
+.order-row{border-color:#f1dfcc}.order-row button{background:#ffe9d2;color:#c2410c}
+.link-btn{color:#7a6890}
+
+/* ---------- layar pembuka ---------- */
+.intro{background:#12061f}
+.intro-bg{background:url(img/hero.jpg) center/cover,linear-gradient(160deg,#ff9a3c,#7b2cbf 55%,#12061f);filter:blur(16px) brightness(.62) saturate(1.1)}
+.intro-bg:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#6d28d9,#a3361c 70%,#ff7a1a);mix-blend-mode:color}
+.intro-shade{background:radial-gradient(ellipse at center,#12061f55,#0a0312e6 85%)}
+.intro-word .ch{color:#b9a6cf;-webkit-text-stroke:6px #12061f;text-shadow:0 5px 0 #12061f}
+.intro-word .ch.mined{color:var(--hw-bone);-webkit-text-stroke:6px #5b1fa0;text-shadow:0 5px 0 #5b1fa0,0 0 30px #ff7a1acc}
+.intro-bar i{background:linear-gradient(#ffb066,#ff6a00)}
+.intro-text{color:#ffe9d2}.intro-text b{color:#ffb347}
+.intro .chip{background:#ff9a3c;box-shadow:0 0 6px #ff7a1a99}.intro .chip:nth-child(odd){background:#cbb8e6}
+
+/* ========== BACKGROUND BERGERAK ========== */
+.hw-back,.hw-front{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.hw-back{z-index:-1}
+.hw-front{z-index:5}
+/* bintang berkelap-kelip */
+.hw-star{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:#fff1dc;opacity:.15;animation:twinkle var(--d) ease-in-out var(--t) infinite}
+@keyframes twinkle{0%,100%{opacity:.12;transform:scale(.8)}50%{opacity:.95;transform:scale(1.25)}}
+/* kabut melayang */
+.hw-fog{position:absolute;left:-30%;width:160%;height:46%;filter:blur(34px);will-change:transform;
+  background:radial-gradient(ellipse at 28% 50%,#a855f73a,transparent 60%),radial-gradient(ellipse at 74% 55%,#ff7a1a26,transparent 55%);animation:fogdrift 38s ease-in-out infinite alternate}
+.hw-fog.f1{bottom:-10%}
+.hw-fog.f2{top:18%;opacity:.7;animation-duration:58s;animation-direction:alternate-reverse}
+@keyframes fogdrift{from{transform:translateX(-9%)}to{transform:translateX(9%)}}
+/* kelelawar */
+.hw-bat{position:absolute;top:var(--y);left:-110px;width:var(--w);animation:batx var(--d) linear var(--t) infinite;will-change:transform}
+.hw-bat.rtl{left:auto;right:-110px;animation-name:batxr}
+.hw-bat>span{display:block;animation:batbob var(--b) ease-in-out infinite}
+.hw-bat.rtl>span{scale:-1 1}
+.hw-bat svg{display:block;width:100%;height:auto;transform-origin:50% 45%;animation:flap .26s ease-in-out infinite alternate;filter:drop-shadow(0 0 6px #a855f799)}
+@keyframes batx{from{transform:translateX(0)}to{transform:translateX(calc(100vw + 240px))}}
+@keyframes batxr{from{transform:translateX(0)}to{transform:translateX(calc(-100vw - 240px))}}
+@keyframes batbob{0%,100%{transform:translateY(-16px)}50%{transform:translateY(16px)}}
+@keyframes flap{from{transform:scaleY(1)}to{transform:scaleY(.42)}}
+/* hantu melayang naik */
+.hw-ghost{position:absolute;left:var(--x);bottom:-90px;font-size:var(--s);opacity:0;filter:drop-shadow(0 0 14px #c9b6ff);animation:ghost var(--d) ease-in-out var(--t) infinite}
+@keyframes ghost{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.5}50%{transform:translate(46px,-58vh) rotate(7deg)}90%{opacity:.5}100%{transform:translate(-34px,-118vh) rotate(-7deg);opacity:0}}
+/* percikan api */
+.hw-ember{position:absolute;bottom:-12px;left:var(--x);width:var(--s);height:var(--s);background:#ff9a3c;box-shadow:0 0 8px #ff6a00;opacity:0;animation:ember var(--d) linear var(--t) infinite}
+@keyframes ember{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.9}100%{transform:translate(var(--dx),-108vh) rotate(180deg);opacity:0}}
+/* laba-laba menggantung & labu menyala (di dalam hero) */
+.hw-spider{position:absolute;z-index:3;top:0;left:62%;display:flex;flex-direction:column;align-items:center;pointer-events:none;transform-origin:50% 0;animation:swing 4.6s ease-in-out infinite alternate}
+.hw-spider:before{content:"";width:2px;height:var(--len,150px);background:linear-gradient(#ffffff40,#ffffffb0)}
+.hw-spider span{font-size:30px;line-height:1;margin-top:-4px;filter:drop-shadow(0 0 6px #a855f7)}
+@keyframes swing{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+.hw-pump{position:absolute;z-index:3;bottom:26px;font-size:56px;line-height:1;pointer-events:none;filter:drop-shadow(0 0 18px #ff7a1a);animation:flicker 3.4s ease-in-out infinite}
+.hw-pump.l{left:max(14px,calc((100% - 1260px)/2 + 6px))}.hw-pump.r{right:max(14px,calc((100% - 1260px)/2 + 6px));font-size:44px;animation-delay:-1.4s}
+@keyframes flicker{0%,100%{filter:drop-shadow(0 0 16px #ff7a1a) brightness(1)}30%{filter:drop-shadow(0 0 30px #ffb347) brightness(1.18)}55%{filter:drop-shadow(0 0 12px #ff7a1a) brightness(.92)}78%{filter:drop-shadow(0 0 26px #ff9a3c) brightness(1.1)}}
+
+@media(max-width:900px){.sv-hero:before{width:86px;height:86px;right:6%;top:104px;opacity:.7}.hw-spider span{font-size:24px}.hw-pump.r{display:none}.sv-head h2{font-size:36px}}
+@media(max-width:700px){.sv-head h2{font-size:32px}.hw-pump{font-size:42px}.hw-spider{left:78%;--len:110px}}
+@media(prefers-reduced-motion:reduce){.hw-back,.hw-front,.hw-spider,.hw-pump{display:none}.sv-promo{animation:none}}
+
+/* ---------- judul hero: font tebal & jelas dibaca ---------- */
+.sv-hero h1{font-family:Poppins,Arial,sans-serif;font-weight:800;font-size:clamp(34px,5vw,68px);line-height:1.1;letter-spacing:.5px;color:#fff;
+  -webkit-text-stroke:2px #1a0b2e;paint-order:stroke fill;
+  text-shadow:0 5px 0 #1a0b2e,0 8px 0 #7b2cbf66,0 0 30px #ff7a1a88,0 12px 30px #000a}

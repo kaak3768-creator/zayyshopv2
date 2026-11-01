@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Panel — ZayyStore</title><meta name="robots" content="noindex">
+<style>
+:root{--bg:#150826;--card:#1f0f38;--line:#ffffff1f;--ink:#f3e9ff;--mute:#a995c7;--or:#ff7a1a;--ok:#35d07f;--bad:#ff5c7a;--wait:#ffc233}
+*{box-sizing:border-box}body{margin:0;font:14px/1.5 Poppins,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{display:flex;align-items:center;gap:12px;padding:14px 22px;border-bottom:2px solid #ff7a1a66;background:#14072b;position:sticky;top:0;z-index:5}
+header h1{font-size:17px;margin:0;flex:1}header h1 span{color:var(--or)}
+a,button{font:inherit}a.btn,button.btn{background:#ffffff1a;color:var(--ink);border:0;border-radius:10px;padding:8px 14px;cursor:pointer;text-decoration:none;font-weight:600;font-size:13px}
+button.pri{background:linear-gradient(#ff9a3c,#ff6a00);color:#fff}button.dan{background:#ff5c7a33;color:#ff9fb0}
+main{max-width:1100px;margin:0 auto;padding:20px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tabs button{background:#ffffff12;color:var(--mute);border:0;border-radius:10px;padding:9px 16px;font-weight:700;cursor:pointer}.tabs button.on{background:var(--or);color:#2a1000}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:18px}h2{font-size:16px;margin:0 0 12px}
+label{display:block;font-size:12px;color:var(--mute);margin:10px 0 4px;font-weight:600}
+input,textarea,select{width:100%;background:#12061f;border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:10px 12px;font:inherit}textarea{min-height:70px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.row{grid-template-columns:1fr}}
+.chk{display:flex;align-items:center;gap:8px;margin-top:12px}.chk input{width:auto}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.prod{background:#12061f;border:1px solid var(--line);border-radius:12px;overflow:hidden}.prod img,.prod .ph{width:100%;height:130px;object-fit:cover;display:block;background:#2a1245;display:grid;place-items:center;font-size:30px}
+.prod div.b{padding:10px 12px}.prod b{display:block}.prod small{color:var(--mute);display:block;margin:2px 0 8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.prod .a{display:flex;gap:6px}
+#prev{width:120px;height:120px;object-fit:cover;border-radius:10px;margin-top:8px;display:none}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--mute);font-size:12px;white-space:nowrap}
+.bd{display:inline-block;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700}.paid{background:#35d07f26;color:var(--ok)}.failed{background:#ff5c7a26;color:var(--bad)}.pending{background:#ffc23326;color:var(--wait)}
+.note{color:var(--mute);font-size:12px}.empty{color:var(--mute);text-align:center;padding:24px}#deny{text-align:center;padding:70px 20px}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#2a1245;border:1px solid #ff7a1a66;border-radius:12px;padding:11px 18px;display:none;z-index:9}
+</style></head><body>
+<header><h1>Zayy<span>Store</span> · Admin Panel</h1><a class="btn" href="/">← Ke toko</a><button class="btn" id="logout">Keluar</button></header>
+<div id="deny" hidden><h2>Akses ditolak</h2><p class="note">Halaman ini khusus admin. Masuk lewat tombol Login di toko dengan akun admin.</p><a class="btn pri" href="/">Ke toko</a></div>
+<main id="app" hidden>
+<div class="tabs" id="tabs"><button data-t="products" class="on">Produk</button><button data-t="users">List User</button><button data-t="orders">Riwayat Transaksi</button><button data-t="activity">Aktivitas Akun</button></div>
+
+<section id="t-products">
+ <div class="card"><h2 id="formTitle">Tambah produk</h2>
+  <form id="pf"><input type="hidden" id="pid">
+   <div class="row"><div><label>Nama produk</label><input id="pname" maxlength="80" required></div><div><label>Harga (Rp)</label><input id="pprice" type="number" min="1000" step="1" required></div></div>
+   <label>Deskripsi produk</label><textarea id="pdesc" maxlength="600"></textarea>
+   <label>Pesan setelah pembayaran (opsional — tampil ke pembeli & dikirim ke email)</label><textarea id="pdel" maxlength="400" placeholder="Mis. Admin akan mengirim akses ke email kamu maksimal 15 menit."></textarea>
+   <label>Foto produk</label><input id="pimg" type="file" accept="image/*"><img id="prev" alt="">
+   <label class="chk"><input id="pusr" type="checkbox"> Pembeli wajib mengisi username Minecraft</label>
+   <div style="margin-top:14px;display:flex;gap:8px"><button class="btn pri" id="psave">Simpan produk</button><button type="button" class="btn" id="pcancel" hidden>Batal edit</button></div>
+  </form></div>
+ <div class="card"><h2>Produk di toko (<span id="pcount">0</span>)</h2><div class="pgrid" id="plist"></div></div>
+</section>
+
+<section id="t-users" hidden><div class="card"><h2>Akun terdaftar (<span id="ucount">0</span>)</h2>
+ <p class="note">Password disimpan terenkripsi (hash) dan tidak bisa dilihat siapa pun. Bila pengguna lupa password, gunakan tombol “Reset password”.</p>
+ <div class="tw"><table><thead><tr><th>Nama</th><th>Email</th><th>Daftar</th><th>Terakhir aktif</th><th></th></tr></thead><tbody id="ulist"></tbody></table></div></div></section>
+
+<section id="t-orders" hidden><div class="card"><h2>Riwayat transaksi</h2>
+ <select id="ofilter" style="max-width:220px;margin-bottom:10px"><option value="">Semua status</option><option value="paid">Berhasil</option><option value="pending">Pending</option><option value="failed">Gagal / kedaluwarsa</option></select>
+ <div class="tw"><table><thead><tr><th>Waktu</th><th>ID Pesanan</th><th>Akun</th><th>Email checkout</th><th>Produk</th><th>Total</th><th>Status</th></tr></thead><tbody id="olist"></tbody></table></div></div></section>
+
+<section id="t-activity" hidden><div class="card"><h2>Aktivitas akun</h2>
+ <p class="note">Urut dari yang terakhir membuka website. Kunjungan dihitung 1× per sesi browser (dan saat login).</p>
+ <div class="tw"><table><thead><tr><th>Nama</th><th>Email</th><th>Terakhir membuka web</th><th>Total kunjungan</th></tr></thead><tbody id="alist"></tbody></table></div></div></section>
+</main><div class="toast" id="toast"></div>
+<script>
+const S=(()=>{try{return JSON.parse(localStorage.getItem("zs_session"))}catch{return null}})();
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const rp=n=>"Rp "+Number(n).toLocaleString("id-ID"),dt=t=>t?new Date(t).toLocaleString("id-ID",{dateStyle:"medium",timeStyle:"short"}):"-";
+const toast=m=>{const t=$("#toast");t.textContent=m;t.style.display="block";clearTimeout(toast.k);toast.k=setTimeout(()=>t.style.display="none",2800)};
+const api=async(path,body)=>{const r=await fetch(path,{method:body?"POST":"GET",headers:{"Content-Type":"application/json",Authorization:"Bearer "+S.token},body:body?JSON.stringify(body):undefined});const j=await r.json().catch(()=>({}));if(!r.ok){const e=new Error(j.error||"Gagal");e.status=r.status;throw e}return j};
+$("#logout").onclick=()=>{localStorage.removeItem("zs_session");location.href="/"};
+if(!S||S.role!=="admin"){$("#deny").hidden=false;$("#logout").hidden=true}else{$("#app").hidden=false;load("products")}
+
+$("#tabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;[...$("#tabs").children].forEach(x=>x.classList.toggle("on",x===b));["products","users","orders","activity"].forEach(t=>$("#t-"+t).hidden=t!==b.dataset.t);load(b.dataset.t)};
+async function load(t){try{
+ if(t==="products"){const{products}=await api("/api/admin?action=products");PR=products;$("#pcount").textContent=products.length;
+  $("#plist").innerHTML=products.length?products.map(p=>`<div class="prod">${p.img?`<img src="/api/img?id=${esc(p.id)}&v=${esc(p.img)}" alt="">`:'<div class="ph">📦</div>'}<div class="b"><b>${esc(p.name)}</b><small>${esc(p.desc||"—")}</small><b style="color:var(--or)">${rp(p.price)}</b><div class="a" style="margin-top:8px"><button class="btn" data-edit="${esc(p.id)}">Edit</button><button class="btn dan" data-del="${esc(p.id)}">Hapus</button></div></div></div>`).join(""):'<div class="empty" style="grid-column:1/-1">Belum ada produk. Tambahkan lewat form di atas.</div>'}
+ if(t==="users"){const{users}=await api("/api/admin?action=users");$("#ucount").textContent=users.length;
+  $("#ulist").innerHTML=users.length?users.map(u=>`<tr><td>${esc(u.name)}</td><td>${esc(u.email)}</td><td>${dt(u.createdAt)}</td><td>${dt(u.lastSeen)}</td><td><button class="btn" data-reset="${esc(u.email)}">Reset password</button></td></tr>`).join(""):'<tr><td colspan="5" class="empty">Belum ada akun terdaftar.</td></tr>'}
+ if(t==="orders"){const{orders}=await api("/api/admin?action=orders");OR=orders;drawOrders()}
+ if(t==="activity"){const{users}=await api("/api/admin?action=activity");
+  $("#alist").innerHTML=users.length?users.map(u=>`<tr><td>${esc(u.name)}</td><td>${esc(u.email)}</td><td>${dt(u.lastSeen)}</td><td>${u.visits}×</td></tr>`).join(""):'<tr><td colspan="4" class="empty">Belum ada aktivitas.</td></tr>'}
+}catch(e){if(e.status===401){localStorage.removeItem("zs_session");location.reload()}else toast(e.message)}}
+let PR=[],OR=[];
+const LBL={paid:"Berhasil",pending:"Pending",failed:"Gagal"};
+function drawOrders(){const f=$("#ofilter").value,l=OR.filter(o=>!f||o.status===f);
+ $("#olist").innerHTML=l.length?l.map(o=>`<tr><td>${dt(o.ts)}</td><td>${esc(o.orderId)}${o.mode==="sandbox"?' <span class="note">(sandbox)</span>':""}</td><td>${esc(o.account||"Tamu")}</td><td>${esc(o.email)}</td><td>${o.items.map(esc).join("<br>")}${o.username?`<br><span class="note">MC: ${esc(o.username)}</span>`:""}</td><td>${rp(o.total)}</td><td><span class="bd ${o.status}">${LBL[o.status]}</span></td></tr>`).join(""):'<tr><td colspan="7" class="empty">Belum ada transaksi.</td></tr>'}
+$("#ofilter").onchange=drawOrders;
+
+/* ---- form produk ---- */
+let IMG=null;
+const resize=f=>new Promise((ok,bad)=>{const i=new Image();i.onload=()=>{const k=Math.min(1,720/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(i,0,0,c.width,c.height);ok(c.toDataURL("image/jpeg",.82))};i.onerror=()=>bad(new Error("File bukan gambar"));i.src=URL.createObjectURL(f)});
+$("#pimg").onchange=async e=>{const f=e.target.files[0];IMG=null;if(!f){$("#prev").style.display="none";return}try{IMG=await resize(f);$("#prev").src=IMG;$("#prev").style.display="block"}catch(x){toast(x.message);e.target.value=""}};
+function resetForm(){$("#pf").reset();$("#pid").value="";IMG=null;$("#prev").style.display="none";$("#formTitle").textContent="Tambah produk";$("#pcancel").hidden=true}
+$("#pcancel").onclick=resetForm;
+$("#pf").onsubmit=async e=>{e.preventDefault();const b=$("#psave");b.disabled=true;
+ try{await api("/api/admin",{action:"save-product",id:$("#pid").value||undefined,name:$("#pname").value,price:Number($("#pprice").value),desc:$("#pdesc").value,delivery:$("#pdel").value,needsUsername:$("#pusr").checked,image:IMG||undefined});toast("Produk tersimpan ✓");resetForm();load("products")}
+ catch(x){toast(x.message)}finally{b.disabled=false}};
+$("#plist").onclick=async e=>{const b=e.target.closest("button");if(!b)return;
+ if(b.dataset.edit){const p=PR.find(x=>x.id===b.dataset.edit);if(!p)return;$("#pid").value=p.id;$("#pname").value=p.name;$("#pprice").value=p.price;$("#pdesc").value=p.desc||"";$("#pdel").value=p.delivery||"";$("#pusr").checked=!!p.needsUsername;IMG=null;$("#pimg").value="";$("#prev").style.display=p.img?"block":"none";if(p.img)$("#prev").src=`/api/img?id=${p.id}&v=${p.img}`;$("#formTitle").textContent="Edit produk";$("#pcancel").hidden=false;scrollTo({top:0,behavior:"smooth"})}
+ if(b.dataset.del&&confirm("Hapus produk ini dari toko?"))try{await api("/api/admin",{action:"delete-product",id:b.dataset.del});toast("Produk dihapus");load("products")}catch(x){toast(x.message)}};
+$("#ulist").onclick=async e=>{const b=e.target.closest("[data-reset]");if(!b)return;const pw=prompt("Password baru untuk "+b.dataset.reset+" (min. 6 karakter):");if(!pw)return;
+ try{await api("/api/admin",{action:"reset-password",email:b.dataset.reset,password:pw});toast("Password diganti. Beritahu pengguna password barunya.")}catch(x){toast(x.message)}};
+</script></body></html>
