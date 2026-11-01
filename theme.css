@@ -107,3 +107,12 @@ body{font-family:Poppins,Inter,system-ui,sans-serif;background:radial-gradient(1
 .auth-err{display:block;color:#d03050;font-size:11px;font-weight:600;margin-top:4px}
 .sv-body p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .link-btn{background:none;font-weight:700;text-decoration:underline;padding:0}
+
+/* ---- foto produk dinamis: tampil UTUH, tanpa blur/shadow berat (menghindari glitch render) ---- */
+.sv-img{background-color:#2a1245}
+.sv-img .sv-photo{position:absolute;inset:0;z-index:1;width:100%;height:100%;max-width:none;object-fit:contain;border-radius:0;box-shadow:none;transition:none;transform:none!important;background:transparent}
+/* ---- badge PROSES CEPAT / INSTANT ---- */
+.sv-speed{display:inline-flex;align-items:center;gap:9px;margin:2px 0 9px;padding:5px 13px 5px 6px;border-radius:11px;background:linear-gradient(110deg,#fff0dc,#ffe2c2);border:1px solid #ffc690;box-shadow:0 2px 0 #f0a860}
+.sv-speed u{text-decoration:none;display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:linear-gradient(145deg,#ffa24d,#e25a00);color:#fff;font-size:14px;box-shadow:0 3px 7px #e25a0055}
+.sv-speed b{display:block;font-size:11px;font-weight:800;letter-spacing:.9px;line-height:1.15;color:#c2410c}
+.sv-speed b em{display:block;font-style:normal;font-size:9.5px;letter-spacing:3px;color:#7b2cbf}
