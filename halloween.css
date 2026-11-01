@@ -117,7 +117,7 @@ body{background:
 .hw-star{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:#fff1dc;opacity:.15;animation:twinkle var(--d) ease-in-out var(--t) infinite}
 @keyframes twinkle{0%,100%{opacity:.12;transform:scale(.8)}50%{opacity:.95;transform:scale(1.25)}}
 /* kabut melayang */
-.hw-fog{position:absolute;left:-30%;width:160%;height:46%;filter:blur(34px);will-change:transform;
+.hw-fog{position:absolute;left:-30%;width:160%;height:46%;will-change:transform;
   background:radial-gradient(ellipse at 28% 50%,#a855f73a,transparent 60%),radial-gradient(ellipse at 74% 55%,#ff7a1a26,transparent 55%);animation:fogdrift 38s ease-in-out infinite alternate}
 .hw-fog.f1{bottom:-10%}
 .hw-fog.f2{top:18%;opacity:.7;animation-duration:58s;animation-direction:alternate-reverse}
@@ -127,7 +127,7 @@ body{background:
 .hw-bat.rtl{left:auto;right:-110px;animation-name:batxr}
 .hw-bat>span{display:block;animation:batbob var(--b) ease-in-out infinite}
 .hw-bat.rtl>span{scale:-1 1}
-.hw-bat svg{display:block;width:100%;height:auto;transform-origin:50% 45%;animation:flap .26s ease-in-out infinite alternate;filter:drop-shadow(0 0 6px #a855f799)}
+.hw-bat svg{display:block;width:100%;height:auto;transform-origin:50% 45%;animation:flap .26s ease-in-out infinite alternate;}
 @keyframes batx{from{transform:translateX(0)}to{transform:translateX(calc(100vw + 240px))}}
 @keyframes batxr{from{transform:translateX(0)}to{transform:translateX(calc(-100vw - 240px))}}
 @keyframes batbob{0%,100%{transform:translateY(-16px)}50%{transform:translateY(16px)}}
