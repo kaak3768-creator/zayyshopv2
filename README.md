@@ -1,4 +1,4 @@
-# ZayyStore — pembayaran & pembelian otomatis (QRIS via Kipay) di Vercel
+# ZayyStore — pembayaran & pembelian otomatis (QRIS via Kipay) di Vercel 
 
 ## Alur otomatis
 1. Pembeli pilih produk → keranjang (+ kode promo `ZAYY20`) → isi email (& username Minecraft bila perlu)
